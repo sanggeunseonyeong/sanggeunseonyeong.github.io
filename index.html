@@ -335,7 +335,6 @@
     </div>
     <!-- 지도 넣기 key : RPJirSVcWhAly16ukATP33bufX2RIgOHDFHLe178 -->
     <!-- Event End -->
-
     <!-- RSVP Start -->
     <div class="container-fluid py-5" id="congrats">
         <div class="container py-5">
@@ -364,7 +363,6 @@
         </div>
     </div>
     <!-- RSVP End -->
-
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-white py-5" id="contact" style="margin-top: 90px;">
         <div class="container text-center py-5">
@@ -374,6 +372,10 @@
             </div>
             <div class="d-flex justify-content-center mb-4">
             </div>
+            <a id="create-kakao-link-btn" href="javascript:sendLink()">
+                <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" alt="카카오링크 보내기 버튼"/>
+            </a>
+            <p>카카오톡 공유하기</p>
             <p class="m-0">&copy;Designed by <a class="text-primary" href="https://htmlcodex.com">선영이를 사랑하는 친구 예나 <br>& HTML Codex</a>
             </p>
         </div>
@@ -396,6 +398,7 @@
     <script src="lib/isotope/isotope.pkgd.min.js"></script>
     <script src="lib/lightbox/js/lightbox.min.js"></script>
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=rmwpscpjuh"></script>
+    <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
@@ -430,6 +433,37 @@
             document.execCommand('copy');
             document.body.removeChild(t);
         };
+    </script>
+
+    <script type="text/javascript">
+        <!--카카오톡 공유하기-->
+        function sendLink() {
+            Kakao.init("1a99413df004763c2305279ac6431b76");
+
+            Kakao.Link.createDefaultButton({
+                container: '#create-kakao-link-btn',
+                objectType: 'feed',
+                content: {
+                    title: '상근&선영 모바일청첩장',
+                    description: '2023.08.20(일) 12:00 아펠가모 선릉',
+                    imageUrl:
+                        'https://sanggeunseonyeong.github.io/img/banner.jpeg',
+                    link: {
+                        mobileWebUrl: 'https://sanggeunseonyeong.github.io/',
+                        webUrl: 'https://sanggeunseonyeong.github.io/',
+                    },
+                },
+                buttons: [
+                    {
+                        title: '상근&선영 모바일청첩장 보기',
+                        link: {
+                            mobileWebUrl: 'https://sanggeunseonyeong.github.io/',
+                            webUrl: 'https://sanggeunseonyeong.github.io/',
+                        },
+                    },
+                ],
+            })
+        }
     </script>
 </body>
 
